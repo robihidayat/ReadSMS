@@ -43,13 +43,13 @@ public class SMSReceiver extends BroadcastReceiver{
     public void sendMessage(MessageForm form)  {
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
         HashMap<String, Object> body = new LinkedHashMap<>();
-        body.put("umid", form.body);
-        body.put("type", form.body);
+        body.put("umid", form.umi);
+        body.put("type", form.type);
         body.put("source", form.source);
         body.put("body", form.body);
-        body.put("destination", form.source);
-        body.put("encoding", form.body);
-        body.put("receivedAt", form.body);
+        body.put("destination", form.destination);
+        body.put("encoding", form.encoding);
+        body.put("receivedAt", form.receivedAt);
         body.put("version", 1);
         System.out.println("isi jsonnys "+ body);
         Call<ResponseBody> message = mApiInterface.postMessage(body);
